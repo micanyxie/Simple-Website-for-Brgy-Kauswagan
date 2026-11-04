@@ -1,0 +1,600 @@
+/* =========================================
+ 1. BASE STYLES & RESET
+ ========================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  background-color: #ffffff;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Ensures footer stays at the bottom */
+  color: #333333;
+}
+/* Global Section Titles (Unified across all pages) */
+.section-title {
+  text-align: center;
+  color: #2c3e50; /* Modern dark slate */
+  font-size: 1.8rem;
+  margin-bottom: 40px;
+  position: relative;
+}
+.section-title::after {
+  content: '';
+  width: 60px;
+  height: 3px;
+  background-color: rgba(38, 172, 82, 0.945); /* Signature theme green */
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* =========================================
+2. HEADER & NAVIGATION
+========================================= */
+header {
+ background-color: rgba(38, 172, 82, 0.945);
+ padding: 15px 0; /* Slightly reduced padding to balance the vertical logo height */
+ color: #ffffff;
+  /* Constant Fixed Header Configuration */
+ position: sticky;
+ top: 0;
+ z-index: 1000; /* Keeps header floating above cards, badges, and maps */
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Adds a premium shadow depth when scrolling */
+}
+.header-container {
+ display: flex;
+ align-items: center;
+ justify-content: space-between;
+ max-width: 1200px;
+ margin: 0 auto;
+ padding: 0 20px;
+}
+/* New Brand Flex Container */
+.brand-container {
+ display: flex;
+ align-items: center;
+ gap: 15px; /* Creates clean spacing between the logo and text */
+}
+.header-logo {
+ height: 55px; /* Perfect sizing constraint for the standard header height */
+ width: auto;
+ object-fit: contain;
+}
+.brand-container h1 {
+ font-size: 1.8rem;
+ font-weight: bold;
+ white-space: nowrap; /* Prevents the barangay name from breaking into two awkward lines on mid-sized screens */
+}
+.brand-text {
+  display: flex;
+  flex-direction: column; /* Forces the H1 and H6 to stack vertically */
+  justify-content: center;
+}
+
+.brand-text h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 1.1; /* Tightens the gap between the title and subtitle */
+  white-space: nowrap;
+  margin: 0;
+}
+
+.brand-text h6 {
+  font-size: 0.9rem;
+  font-weight: normal;
+  color: #eaf6ec; /* Slight off-white to make the main title pop */
+  margin: 0;
+  letter-spacing: 0.5px;
+}
+.nav {
+ display: flex;
+ align-items: center;
+ position: relative;
+}
+.menu-links {
+ display: flex;
+ list-style: none;
+ justify-content: center;
+ align-items: center;
+ gap: 10px;
+}
+.menu-links a {
+ position: relative;
+ color: #ffffff;
+ text-decoration: none;
+ text-align: center;
+ display: inline-block;
+ line-height: 1.2;
+ max-width: 150px; /* Clean word-wrapping constraint for desktop row */
+ padding: 10px 15px;
+ transition: background-color 0.3s, border-radius 0.3s;
+}
+.menu-links li a:hover {
+ background-color: rgba(0, 0, 0, 0.1);
+ border-radius: 5px;
+}
+/* Premium micro-underline centered active link indicator */
+.menu-links a.active::after {
+ content: '';
+ position: absolute;
+ left: 50%;
+ transform: translateX(-50%);
+ bottom: 2px;
+ width: 30px;
+ height: 2px;
+ background-color: #ffffff;
+}
+/* Hamburger Menu (Desktop Hidden) */
+.hamburger {
+ display: none;
+ flex-direction: column;
+ cursor: pointer;
+ background-color: transparent;
+ border: none;
+}
+.hamburger .bar {
+ width: 25px;
+ height: 3px;
+ background-color: #ffffff;
+ margin: 4px 0;
+ transition: 0.3s ease;
+}
+
+/* =========================================
+ 3. MAIN CONTENT & HERO BANNER
+ ========================================= */
+.main-content {
+  flex: 1; /* Pushes the footer down */
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  width: 100%;
+}
+.hero-banner {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-color: #333333;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.hero-bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 1;
+}
+.hero-text {
+  position: relative;
+  z-index: 2;
+  color: #ffffff;
+  padding: 0 20px;
+}
+.hero-text h2 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.6);
+}
+.hero-text p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+}
+.hero-btn {
+  display: inline-block;
+  background-color: rgba(38, 172, 82, 0.945);
+  color: #ffffff;
+  padding: 12px 24px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+.hero-btn:hover {
+  background-color: rgb(28, 138, 64);
+  transform: translateY(-2px);
+}
+.intro-section {
+  padding: 40px 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  margin-bottom: 40px;
+}
+.intro-container {
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+.intro-container h3 {
+  color: #333333;
+  font-size: 2rem;
+  margin-bottom: 20px;
+  position: relative;
+  display: inline-block;
+}
+.intro-container h3::after {
+  content: '';
+  width: 50%;
+  height: 3px;
+  background-color: rgba(38, 172, 82, 0.945);
+  position: absolute;
+  bottom: -8px;
+  left: 25%;
+}
+.intro-container p {
+  color: #555555;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  text-align: justify;
+}
+
+/* =========================================
+ 4. SHARED CARD MODULES (Unified Shadows & Visual Layouts)
+ ========================================= */
+.officials-section, .tourism-section, .services-section, .school-section, .business-section {
+  margin-bottom: 50px;
+}
+.council-grid, .tourism-grid, .services-grid, .school-grid, .business-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 20px;
+}
+/* Card Foundations */
+.official-card, .tourism-card, .service-card, .school-card, .business-card {
+  background-color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+.official-card:hover, .tourism-card:hover, .service-card:hover, .school-card:hover, .business-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+/* Top Accent Card Variants */
+.official-card { padding: 25px 15px; text-align: center; border-top: 4px solid rgba(38, 172, 82, 0.945); }
+.service-card, .business-card, .tourism-card, .school-card { padding: 30px 25px; text-align: center; border-top: 4px solid rgba(38, 172, 82, 0.945); }
+/* Image Variants */
+.tourism-img, .school-img, .business-img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-bottom: 4px solid rgba(38, 172, 82, 0.945); /* Standardized green line */
+}
+/* Internal Info Foundations */
+.tourism-info, .school-info, .business-info {
+  padding: 25px 20px;
+  flex-grow: 1;
+  position: relative;
+}
+.official-card h3, .official-card h4,
+.tourism-info h4, .service-card h4,
+.school-info h4, .business-info h4 {
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+.service-card p, .tourism-info p, .school-info p, .business-info p {
+  color: #666666;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+/* Specific Sub-features */
+.official-photo {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto 15px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #e0e0e0;
+  border: 3px solid rgba(38, 172, 82, 0.945);
+}
+.official-photo img { width: 100%; height: 100%; object-fit: cover; }
+.official-card .position { color: #666666; font-size: 0.95rem; font-style: italic; }
+.captain-section { display: flex; justify-content: center; }
+.captain-card { max-width: 350px; width: 100%; border-top-width: 6px; }
+.captain-card .official-photo { width: 150px; height: 150px; }
+.three-col { grid-template-columns: repeat(auto-fit, minmax(220px, 300px)); }
+.service-icon { font-size: 2.5rem; margin-bottom: 15px; }
+/* Badges */
+.school-badge, .business-badge {
+  position: absolute;
+  top: -15px;
+  right: 20px;
+  padding: 5px 15px;
+  border-radius: 20px;
+  color: #ffffff;
+  font-size: 0.85rem;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+.school-badge.public { background-color: #2980b9; }
+.school-badge.private { background-color: #f39c12; }
+.school-badge.accessible { background-color: #8e44ad; }
+.business-badge.hub { background-color: #e74c3c; }
+.business-badge.retail { background-color: #f39c12; }
+.business-badge.logistics { background-color: #34495e; }
+.business-badge.enterprise { background-color: #2980b9; }
+/* Sub-Location Trims */
+.school-contact, .business-location, .tourism-location {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: rgba(38, 172, 82, 0.945) !important;
+  margin-bottom: 0 !important;
+  border-top: 1px solid #eeeeee;
+  padding-top: 15px;
+  margin-top: 15px;
+}
+
+/* =========================================
+ 5. STATIC PAGE INTERIORS (About / Banners)
+ ========================================= */
+.page-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding: 30px 20px;
+  background-color: #eaf6ec;
+  border-radius: 8px;
+}
+.page-header h2 { color: #333333; font-size: 2.5rem; margin-bottom: 10px; }
+.page-header p { color: #555555; font-size: 1.2rem; }
+.about-section {
+  background-color: #ffffff;
+  padding: 30px;
+  margin-bottom: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border-left: 5px solid rgba(38, 172, 82, 0.945);
+}
+.about-section h3 { color: #222222; font-size: 1.8rem; margin-bottom: 15px; }
+.about-section p { color: #555555; font-size: 1.1rem; line-height: 1.7; margin-bottom: 15px; text-align: justify; }
+.about-section ul { margin-left: 20px; margin-bottom: 15px; color: #555555; font-size: 1.1rem; line-height: 1.7; }
+.about-section ul li { margin-bottom: 8px; }
+.map-section { border-left: none; }
+.map-container { width: 100%; margin-top: 20px; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+/* Banners */
+.business-cta {
+  background-color: #f8f9fa;
+  border-left: 5px solid rgba(38, 172, 82, 0.945);
+  padding: 40px;
+  border-radius: 8px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.business-cta h3 { color: #2c3e50; font-size: 1.5rem; margin-bottom: 10px; }
+.business-cta p { color: #555555; margin-bottom: 25px; font-size: 1rem; }
+.cta-btn {
+  display: inline-block;
+  background-color: rgba(38, 172, 82, 0.945);
+  color: #ffffff;
+  padding: 12px 25px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+.cta-btn:hover { background-color: rgba(28, 142, 62, 0.945); }
+
+/* =========================================
+ 6. TABLES & CONTACT FORMS
+ ========================================= */
+.fees-section {
+  margin-bottom: 60px;
+  background-color: #ffffff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.fees-subtitle { color: #666666; margin-bottom: 20px; font-style: italic; }
+.table-responsive { overflow-x: auto; }
+.fees-table { width: 100%; border-collapse: collapse; margin-bottom: 20px; font-size: 1rem; }
+.fees-table th, .fees-table td { padding: 12px 15px; border: 1px solid #dddddd; text-align: left; }
+.fees-table th { background-color: rgba(38, 172, 82, 0.945); color: #ffffff; font-weight: bold; }
+.fees-table tr:nth-child(even) { background-color: #f9f9f9; }
+.fees-table tr:hover { background-color: #f1f1f1; }
+.table-subheader td { background-color: #e8f5e9 !important; font-weight: bold; color: #2c3e50; }
+.indented { padding-left: 30px !important; }
+.fee-note { background-color: #fff3cd; color: #856404; padding: 15px; border-left: 4px solid #ffeeba; border-radius: 4px; font-size: 0.95rem; line-height: 1.5; }
+/* Contacts Form Integration */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 20px;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+.contact-info h4, .contact-form-container h4 { color: #2c3e50; margin-bottom: 15px; font-size: 1.2rem; }
+.contact-form-container h4 { margin-bottom: 20px; }
+.contact-info p { color: #666666; margin-bottom: 20px; }
+.contact-details, .office-hours { list-style: none; padding: 0; margin-bottom: 30px; }
+.contact-details li, .office-hours li { margin-bottom: 12px; color: #444444; font-size: 1rem; }
+.form-group { margin-bottom: 20px; }
+.form-group label { display: block; margin-bottom: 8px; color: #333333; font-weight: bold; font-size: 0.9rem; }
+.form-group input, .form-group textarea { width: 100%; padding: 12px; border: 1px solid #cccccc; border-radius: 5px; font-size: 1rem; font-family: inherit; transition: border-color 0.3s ease; }
+.form-group input:focus, .form-group textarea:focus { outline: none; border-color: rgba(38, 172, 82, 0.945); }
+.submit-btn { background-color: rgba(38, 172, 82, 0.945); color: #ffffff; border: none; padding: 12px 25px; font-size: 1rem; font-weight: bold; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease; width: 100%; }
+.submit-btn:hover { background-color: rgba(28, 142, 62, 0.945); }
+
+/* =========================================
+ 7. MODERN FOOTER STYLES
+ ========================================= */
+.modern-footer {
+  background-color: rgba(38, 172, 82, 0.945);
+  color: #ffffff;
+  padding: 50px 20px 20px;
+  margin-top: 50px;
+}
+.footer-top {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-bottom: 40px;
+}
+.footer-col h3 {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #ffffff;
+  position: relative;
+  padding-bottom: 10px;
+}
+.footer-col h3::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 50px;
+  height: 3px;
+  background-color: #ffffff;
+}
+.footer-col p {
+  line-height: 1.6;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+.footer-links, .footer-contact, .sub-list {
+  list-style: none;
+  padding: 0;
+}
+.footer-links li, .footer-contact li, .sub-list li {
+  margin-bottom: 12px;
+  color: #ffffff;
+  font-size: 0.95rem;
+}
+.footer-links a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+.footer-links a:hover {
+  color: rgba(255, 255, 255, 0.7);
+  padding-left: 5px;
+}
+.footer-bottom {
+  text-align: center;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.footer-bottom p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* =========================================
+ 8. MOBILE RESPONSIVE ADJUSTMENTS
+ ========================================= */
+@media (max-width: 1150px) {
+    header {
+      padding: 15px 0; /* Keeps mobile header compact */
+    }
+  .hamburger {
+      display: flex;
+  }
+   .menu-links {
+      display: none;
+      flex-direction: column;
+      position: absolute;
+      top: 100%; /* Aligns dropdown beautifully right beneath the header wrapper */
+      margin-top: 15px; /* Adds a subtle gap between the header and dropdown */
+      right: 0;
+      background-color: rgba(38, 172, 82, 0.98);
+      text-align: center;
+      width: 200px;
+      border-radius: 5px;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+      z-index: 9999;
+      gap: 0;
+      padding: 10px 0;
+  }
+   .menu-links li {
+      width: 100%;
+      padding: 5px 0;
+  }
+  .menu-links a {
+      display: block;
+      width: 100%;
+      max-width: none !important; /* Removes desktop horizontal line width constraint */
+      padding: 10px 0;
+  }
+  /* Hides the desktop absolute underline asset on mobile dropdown view */
+  .menu-links a.active::after {
+      display: none;
+  }
+ 
+  .menu-links a.active {
+      background-color: rgba(0, 0, 0, 0.15);
+      font-weight: bold;
+  }
+   .menu-links.active {
+      display: flex;
+  }
+   /* Hamburger "X" Animation Transitions */
+  .hamburger.active .bar:nth-child(1) { transform: translateY(11px) rotate(45deg); }
+  .hamburger.active .bar:nth-child(2) { opacity: 0; }
+  .hamburger.active .bar:nth-child(3) { transform: translateY(-11px) rotate(-45deg); }
+
+  /* Mobile Header Brand Scaling Fixes */
+  .header-logo {
+     height: 40px; /* Scales down smoothly on small viewports */
+  }
+
+  .brand-container h1 {
+     font-size: 1.2rem; /* Shrinks text size so it never pushes the hamburger button out of view */
+  }
+
+  .brand-container {
+     gap: 10px;
+  }
+ 
+  /* Layout Shrinkage */
+  .hero-banner { height: 300px; }
+  .hero-text h2 { font-size: 1.8rem; }
+  .hero-text p { font-size: 1rem; }
+  .intro-container h3 { font-size: 1.5rem; }
+  .intro-section { padding: 20px; }
+  .page-header h2 { font-size: 2rem; }
+  .about-section { padding: 20px; }
+  .about-section h3 { font-size: 1.5rem; }
+  .map-container iframe { height: 300px; }
+ 
+  /* Stack Layout Forms */
+  .contact-wrapper {
+      grid-template-columns: 1fr;
+      padding: 20px;
+  }
+}
